@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.nio.file.Path;
 
 public class FileInspector
@@ -15,12 +16,16 @@ public class FileInspector
             File workingDirectory = new File(System.getProperty("user.dir"));
             inspector.setCurrentDirectory(workingDirectory);
 
-            if (inspector.showOpenDialog(null)) == JFileChooser.APPROVE_OPTION)
+            if (inspector.showDialog(null) == JFileChooser.APPROVE_OPTION)
             {
                 selectedFile = inspector.getSelectedFile();
                 Path file = selectedFile.toPath();
 
             }
+        }
+        catch (FileNotFoundException e)
+        {
+            
         }
     }
 }
