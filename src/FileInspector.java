@@ -12,6 +12,8 @@ public class FileInspector
         JFileChooser chooser = new JFileChooser();
         File selectedFile;
         String rec = "";
+        int wordCount = 0;
+        int charCount = 0;
 
         try
         {
@@ -30,14 +32,15 @@ public class FileInspector
                 while(reader.ready())
                 {
                     rec = reader.readLine();
+                    charCount = rec.length() + charCount;
                     String [] word = rec.split(" ");
-                    int wordCount = word.length + wordCount;
+                    wordCount = word.length + wordCount;
                     line++;
                     System.out.println("[" + line + "] " + rec);
                 }
                 reader.close();
-                System.out.println("The file had " + line + " lines. The file had " + wordCount + " characters." );
                 System.out.println("Finished reading the file!");
+                System.out.println("The file had " + line + " lines, " + wordCount + " words, and " + charCount + " characters." );
 
             }
             else
